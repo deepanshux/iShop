@@ -1,0 +1,44 @@
+﻿<Properties StartupConfiguration="{92FC723B-7676-4D29-9147-66093988F8FF}|https">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="iShopAPI/Repository /ProductRepo.cs">
+    <Files>
+      <File FileName="iShopAPI/Model/User.cs" Line="12" Column="1" />
+      <File FileName="iShopAPI/Model/Product.cs" Line="9" Column="16" />
+      <File FileName="iShopAPI/Model/Cart.cs" Line="12" Column="1" />
+      <File FileName="iShopAPI/appsettings.json" Line="11" Column="1" />
+      <File FileName="iShopAPI/Program.cs" Line="31" Column="1" />
+      <File FileName="iShopAPI/Properties/launchSettings.json" Line="17" Column="32" />
+      <File FileName="iShopAPI/appsettings.Development.json" Line="1" Column="1" />
+      <File FileName="iShopAPI/Controllers/UserController.cs" Line="19" Column="32" />
+      <File FileName="iShopAPI/Controllers/ProductController.cs" Line="18" Column="1" />
+      <File FileName="iShopAPI/Service/UserService.cs" Line="24" Column="1" />
+      <File FileName="iShopAPI/Service/ProductService.cs" Line="23" Column="2" />
+      <File FileName="iShopAPI/Wrapper/JsonUtility.cs" Line="12" Column="12" />
+      <File FileName="iShopAPI/Repository /ProductRepo.cs" Line="1" Column="14" />
+      <File FileName="iShopAPI/Global/Global.cs" Line="9" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="iShopAPI" expanded="True">
+            <Node name="iShopAPI" expanded="True">
+              <Node name="Repository " expanded="True">
+                <Node name="ProductRepo.cs" selected="True" />
+              </Node>
+              <Node name="Service" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.iShopAPI PreferredExecutionTarget="/Applications/Google Chrome.app" />
+</Properties>
