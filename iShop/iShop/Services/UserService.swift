@@ -36,7 +36,8 @@ class UserService {
     }
     
     static func create(value: User){
-        FirebaseService.post(path: "users", value: value)
+        let user : [String:Any] = ["name": value.name , "password": value.password , "email": value.email ]
+        FirebaseService.post(path: "users", value: user)
     }
     
     static private func parseData(snapshot : DataSnapshot?) -> User?{

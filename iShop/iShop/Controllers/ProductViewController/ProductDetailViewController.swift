@@ -39,6 +39,6 @@ class ProductDetailViewController: UIViewController {
     }
     
     private func loadImage(){
-        productDetailsImage.downloadedFrom(link: product?.image ?? "")
+//        productDetailsImage.loadImage(imageURL: URL(string: product?.image ?? " ")!)
     }
 }

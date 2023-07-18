@@ -9,14 +9,17 @@ import Foundation
 
 class LoginViewModel {
     
-    func loginUser(request : LoginRequest, completion: @escaping (Bool) -> Void){
+    func loginUser(request : LoginRequest, completion: @escaping (LoginResponse) -> Void){
+        
         if (isValidRequest(request: request)){
             UserService.getByEmail(email: request.username!, completion: { data in
-                completion(self.auth(request: request, user: data))
+                let response = self.auth(request: request, user: data)
+                completion(response)
             })
         }
         else{
-            completion(false)
+            let response = LoginResponse(user: nil, status: false, errorMessage: Global.EmptyErrorMessage)
+            completion(response)
         }
     }
     
@@ -27,11 +30,11 @@ class LoginViewModel {
         return false
     }
     
-    private func auth(request : LoginRequest, user : User?)->Bool{
+    private func auth(request : LoginRequest, user : User?)->LoginResponse{
         if (user?.email == request.username && user?.password == request.password){
-            return true
+            return LoginResponse(user: user, status: true, errorMessage: "NULL")
         }
-        return false
+        return LoginResponse(user: user, status: false, errorMessage: Global.IncorrectErrorMessage)
     }
     
 }

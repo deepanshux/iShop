@@ -23,7 +23,7 @@ extension ProductListViewController : UICollectionViewDelegate, UICollectionView
         let cell = productsCollection.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as! ProductCollectionViewCell
         cell.productPrice.text = "\(products[indexPath.row].price)"
         cell.productTitle.text = products[indexPath.row].name
-        cell.productImage.loadImage(imageURL: URL(string: products[indexPath.row].image)!)
+        cell.productImage.downloadImage(imageURL: URL(string: products[indexPath.row].image)!)
         return cell
     }
     
@@ -32,5 +32,9 @@ extension ProductListViewController : UICollectionViewDelegate, UICollectionView
             ProductDetailViewController
         productDetailVc.product = products[indexPath.row]
         navigationController?.pushViewController(productDetailVc, animated: true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        productViewModel.onScrollingView(scrollView: scrollView)
     }
 }

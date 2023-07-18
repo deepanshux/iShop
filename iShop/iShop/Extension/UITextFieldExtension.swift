@@ -1,20 +1,16 @@
 //
-//  Global.swift
+//  UITextFieldExtension.swift
 //  iShop
 //
-//  Created by Deepanshu Jain on 13/06/23.
+//  Created by Deepanshu Jain on 14/07/23.
 //
 
 import Foundation
+import UIKit
 
-class Global {
-    public static var userURL = URL(string: "https://localhost:7210/User/4")
-    public static var productsURL = URL(string: "https://localhost:7210/Product")
-    public static let placeholderImage = "placeholderImage"
-    public static let EmptyErrorMessage = "Username or password should not be empty"
-    public static let IncorrectErrorMessage = "Incorrect Username or password"
+class UIEmailField : UITextField {
     
-    static func isValidEmail(email: String) -> Bool {
+    func isValidEmail(email: String) -> Bool {
       
       let emailRegEx = "[A-Z0-9a-z.-_]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}"
       
@@ -32,7 +28,15 @@ class Global {
           print("invalid regex: \(error.localizedDescription)")
           return false
       }
+      
       return true
   }
     
+}
+
+class UIPasswordField : UITextField {
+    
+    func isValid(textField : UIPasswordField){
+        
+    }
 }

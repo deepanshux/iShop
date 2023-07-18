@@ -8,6 +8,7 @@
 import Foundation
 
 struct LoginResponse {
-    let data : User?
+    let user : User?
+    let status : Bool
     let errorMessage : String?
 }

@@ -211,15 +211,19 @@
                                     <color key="baseForegroundColor" red="0.20219310200000001" green="0.74207211520000005" blue="0.69195330420000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="tapOnCreateAccount:" destination="eD6-ZD-6b1" eventType="touchUpInside" id="Nyb-DF-m7j"/>
                                     <action selector="tapOnLogin:" destination="eD6-ZD-6b1" eventType="touchUpInside" id="r5U-fz-Tzu"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="oea-s5-czP">
+                                <rect key="frame" x="196.66666666666666" y="447.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4zX-UL-W5h"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="4zX-UL-W5h" firstAttribute="trailing" secondItem="i90-GB-anM" secondAttribute="trailing" constant="25" id="7xH-Ui-w9J"/>
+                            <constraint firstItem="oea-s5-czP" firstAttribute="centerX" secondItem="zTj-5C-5VX" secondAttribute="centerX" id="8PK-3N-hbt"/>
+                            <constraint firstItem="oea-s5-czP" firstAttribute="centerY" secondItem="zTj-5C-5VX" secondAttribute="centerY" id="K8T-ux-KpL"/>
                             <constraint firstItem="4zX-UL-W5h" firstAttribute="bottom" secondItem="HLV-On-fVW" secondAttribute="bottom" constant="25" id="Nv7-S6-A6c"/>
                             <constraint firstItem="HLV-On-fVW" firstAttribute="leading" secondItem="4zX-UL-W5h" secondAttribute="leading" constant="45" id="QDd-TT-xUu"/>
                             <constraint firstItem="i90-GB-anM" firstAttribute="centerY" secondItem="zTj-5C-5VX" secondAttribute="centerY" id="UnB-5U-WFJ"/>
@@ -228,7 +232,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="oea-s5-czP" id="8z6-SK-71i"/>
                         <outlet property="confirmPassField" destination="uGe-sf-AnM" id="uo2-Ck-BgE"/>
+                        <outlet property="createAccountButton" destination="Pi7-IH-1lB" id="AKy-bS-bde"/>
                         <outlet property="emailField" destination="ylc-gu-gEW" id="ZAl-dz-Qp8"/>
                         <outlet property="nameField" destination="f2a-X5-Ryt" id="cIB-tP-IiU"/>
                         <outlet property="passField" destination="jr9-vn-8Mt" id="0Pe-hr-mRU"/>
@@ -582,7 +588,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo-iShop" translatesAutoresizingMaskIntoConstraints="NO" id="v1d-0g-tNU">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo-iShop" translatesAutoresizingMaskIntoConstraints="NO" id="v1d-0g-tNU" customClass="LazyImageView" customModule="iShop" customModuleProvider="target">
                                                     <rect key="frame" x="25" y="20" width="150" height="170"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>

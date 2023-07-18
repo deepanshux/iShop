@@ -11,7 +11,7 @@ class ProductListViewController: UIViewController {
 
     @IBOutlet weak var productsCollection: UICollectionView!
     
-    private var productViewModel = ProductListViewModel()
+    var productViewModel = ProductListViewModel()
     var products = [Product]()
     
     override func viewDidLoad() {

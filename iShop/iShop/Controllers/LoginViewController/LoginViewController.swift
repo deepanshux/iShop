@@ -34,15 +34,19 @@ class LoginViewController: UIViewController {
     
     private func checkLogin() {
         let request = LoginRequest(username: usernameField.text, password: passwordField.text)
-        loginViewModel.loginUser(request: request, completion: { login in
+        loginViewModel.loginUser(request: request, completion: { response in
             self.updateUI(isLoading: false)
-            if (login == true) {
-                self.navigateToHome()
-            }
-            else {
-                self.showAlert()
-            }
+            self.checkResponse(response: response)
         })
+    }
+    
+    private func checkResponse(response : LoginResponse){
+        if (response.status == true) {
+            self.navigateToHome()
+        }
+        else {
+            self.showAlert(message : response.errorMessage ?? Global.IncorrectErrorMessage)
+        }
     }
     
     private func setDelegates() {
@@ -65,8 +69,8 @@ class LoginViewController: UIViewController {
         self.navigationController?.pushViewController(signUpViewController, animated: true)
     }
     
-    private func showAlert(){
-        AlertManager.showAlert(title: "Incorrect", message: "Username or passoword is incorrect", buttonTitle: "Try Again")
+    private func showAlert(message : String){
+        AlertManager.showAlert(title: "Incorrect", message: message, buttonTitle: "Try Again")
     }
     
 }

@@ -12,6 +12,7 @@ import FirebaseDatabase
 class FirebaseService {
     
     private static let databaseReference = Database.database()
+    private static var dataSnapShot : DataSnapshot?
     
     static func get(path: String, completion: @escaping (DataSnapshot?) -> Void ){
         
@@ -34,8 +35,29 @@ class FirebaseService {
         })
     }
     
+    static func getByLimit(path:String, limit:Int, id:Int, completion : @escaping (DataSnapshot?) -> Void){
+        let rootReference = databaseReference.reference(withPath: path)
+        let query = getQueryForPagination(reference: rootReference, limit: UInt(limit), productId: id)
+        
+        query.observeSingleEvent(of: .value, with: {snapshot in
+            dataSnapShot = snapshot
+            completion(snapshot)
+        })
+    }
+    
     static func post(path: String, value : Any){
         databaseReference.reference().child(path).childByAutoId().setValue(value)
         print("Data has been saved")
+    }
+    
+    private static func getQueryForPagination(reference : DatabaseReference,limit:UInt, productId:Int) -> DatabaseQuery{
+        var query : DatabaseQuery!
+        if (dataSnapShot == nil) {
+            query = reference.queryLimited(toFirst: limit)
+        }
+        else{
+            query = reference.queryOrdered(byChild: "id").queryStarting(atValue: productId).queryLimited(toFirst: limit)
+        }
+        return query
     }
 }

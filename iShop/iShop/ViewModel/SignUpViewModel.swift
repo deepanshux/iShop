@@ -11,17 +11,22 @@ class SignUpViewModel : NSObject {
     
     var users : User?
     
-    override init() {
-        super.init()
-        getUserData()
-    }
-    
-    func signUpUser(request : SignUpRequest, completion: @escaping (Bool)->Void){
-        if (isValidRequest(request: request)){
-            completion(true)
+    func signUpUser(request : SignUpRequest, completion: @escaping (SignUpResponse)->Void){
+        
+        let response = isValidRequest(request: request)
+        if (response.status){
+            UserService.getByEmail(email: request.email!, completion: { userData in
+                if (userData != nil){
+                    completion(self.alreadyExistUser())
+                }
+                else{
+                    self.createUser(request: request)
+                    completion(response)
+                }
+            })
         }
         else{
-            completion(false)
+            completion(response)
         }
     }
     
@@ -31,16 +36,31 @@ class SignUpViewModel : NSObject {
         })
     }
     
-    private func checkAlreadyExistUser(){
-        
+    private func createUser(request : SignUpRequest) {
+        let user = User(id: 0, name: request.name!, email: request.email!, password: request.password!)
+        UserService.create(value: user)
     }
     
-    private func isValidRequest(request : SignUpRequest) -> Bool{
+    private func alreadyExistUser() -> SignUpResponse{
+        let response = SignUpResponse()
+        response.errorMessage = "The email address is already exist"
+        return response
+    }
+    
+    private func isValidRequest(request : SignUpRequest) -> SignUpResponse{
+        
+        let response = SignUpResponse()
         if (request.name != "" && request.password != "" && request.email != ""){
             if (request.password == request.confirmPass){
-                return true
+                response.status = true
+                return response
+            }
+            else{
+                response.errorMessage = "Password does not match"
+                return response
             }
         }
-        return false
+        response.errorMessage = "Please fill all the details"
+        return response
     }
 }

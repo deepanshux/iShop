@@ -19,6 +19,13 @@ class ProductService {
         });
     }
     
+    static func getByLimit(lastProductId:Int=0, completion: @escaping ([Product]) -> Void){
+        FirebaseService.getByLimit(path: "products", limit: 10, id:lastProductId,completion: {snapshot in
+            products = parseData(snapshot: snapshot)
+            completion(products)
+        })
+    }
+    
     private static func parseData(snapshot : DataSnapshot?) -> [Product]{
         var productArray = [Product]()
         
